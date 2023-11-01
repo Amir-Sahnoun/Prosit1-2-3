@@ -1,7 +1,7 @@
 package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.*;
-import tn.esprit.gestionzoo.exceptions.ZooFullException;
+import tn.esprit.gestionzoo.exceptions.*;
 
 public class ZooManagement {
 
@@ -101,8 +101,8 @@ public class ZooManagement {
 
         // Créez des animaux
         Animal lion = new Animal("Furry", "Leonard", 16, true);
-        Animal dog = new Animal("Nappy", "Plugy", 2, true);
-        Animal cat = new Animal("Fluffy", "Whiskers", 4, true);
+        Animal dog = new Animal("Nappy", "Plugy", -2, true);
+//        Animal cat = new Animal("Fluffy", "Whiskers", 4, true);
 
         try {
             myZoo.addAnimal(lion);
@@ -110,10 +110,7 @@ public class ZooManagement {
 
             myZoo.addAnimal(dog);
             System.out.println("Number of animals in the zoo: " + myZoo.getNbrAnimals());
-
-            myZoo.addAnimal(cat);
-            System.out.println("Number of animals in the zoo: " + myZoo.getNbrAnimals());
-        } catch (ZooFullException e) {
+        } catch (ZooFullException | InvalidAgeException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
