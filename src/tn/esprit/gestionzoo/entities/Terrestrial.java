@@ -1,21 +1,43 @@
 package tn.esprit.gestionzoo.entities;
 
-public class Terrestrial {
-    private int nbrLegs;
+import tn.esprit.gestionzoo.enums.Food;
+import tn.esprit.gestionzoo.interfaces.Omnivore;
 
-    public Terrestrial(int nbrLegs) {
-        this.nbrLegs = nbrLegs;
+public class Terrestrial implements Omnivore<Food> {
+    private String habitat;
+    private String name;
+    private int age;
+    public Terrestrial(String habitat, String name, int age) {
+        this.habitat = habitat;
+        this.name = name;
+        this.age = age;
     }
 
-    public int getNbrLegs() {
-        return nbrLegs;
+    public String getHabitat() {
+        return habitat;
     }
 
-    public void setNbrLegs(int nbrLegs) {
-        this.nbrLegs = nbrLegs;
+    public String getName() {
+        return name;
     }
+
+    public int getAge() {
+        return age;
+    }
+//    @Override
+//    public String toString() {
+//        return "Number of Legs: " + nbrLegs;
+//    }
     @Override
-    public String toString() {
-        return "Number of Legs: " + nbrLegs;
+    public void eatPlantAndMeat(Food food) {
+        if (food == Food.BOTH) {
+            System.out.println("Terrestrial animal is eating both plant and meat.");
+        } else if (food == Food.MEAT) {
+            System.out.println("Terrestrial animal is eating meat.");
+        } else if (food == Food.PLANT) {
+            System.out.println("Terrestrial animal is eating plant.");
+        } else {
+            System.out.println("Terrestrial animal cannot eat this food.");
+        }
     }
 }

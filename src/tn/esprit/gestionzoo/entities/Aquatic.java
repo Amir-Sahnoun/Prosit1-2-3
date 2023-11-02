@@ -1,6 +1,9 @@
 package tn.esprit.gestionzoo.entities;
 
-public abstract class Aquatic {
+import tn.esprit.gestionzoo.enums.Food;
+import tn.esprit.gestionzoo.interfaces.Carnivore;
+
+public abstract class Aquatic implements Carnivore<Food> {
     private String habitat;
     private String name;
     private int age;
@@ -40,5 +43,13 @@ public abstract class Aquatic {
         }
         Aquatic other = (Aquatic) obj;
         return name.equals(other.name) && age == other.age && habitat.equals(other.habitat);
+    }
+    @Override
+    public void eatMeat(Food food) {
+        if (food == Food.MEAT || food == Food.BOTH) {
+            System.out.println("Aquatic animal is eating meat.");
+        } else {
+            System.out.println("Aquatic animal cannot eat this food.");
+        }
     }
 }
