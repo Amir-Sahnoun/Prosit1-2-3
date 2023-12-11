@@ -2,6 +2,7 @@ package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.*;
 import tn.esprit.gestionzoo.exceptions.*;
+import tn.esprit.gestionzoo.enums.Food;
 
 public class ZooManagement {
 
@@ -47,23 +48,23 @@ public class ZooManagement {
 //        Aquatic aquaticAnimal = new Aquatic("Ocean");
 
         // Animal terrestre
-        Terrestrial terrestrialAnimal = new Terrestrial(4);
+//        Terrestrial terrestrialAnimal = new Terrestrial(4);
 
         // Dauphin
-        Dolphin dolphin = new Dolphin("Ocean", 20.5f);
-
-        // Pingouin
-        Penguin penguin = new Penguin("Antarctica", 30.0f);
+//        Dolphin dolphin = new Dolphin("Ocean", 20.5f);
+//
+//        // Pingouin
+//        Penguin penguin = new Penguin("Antarctica", 30.0f);
 
         // Affichez les objets créés en utilisant la méthode toString()
 //        System.out.println("Aquatic Animal: " + aquaticAnimal);
-        System.out.println("Terrestrial Animal: " + terrestrialAnimal);
-        System.out.println("Dolphin: " + dolphin);
-        System.out.println("Penguin: " + penguin);
-
-//        aquaticAnimal.swim();
-        dolphin.swim();
-        penguin.swim();
+//        System.out.println("Terrestrial Animal: " + terrestrialAnimal);
+//        System.out.println("Dolphin: " + dolphin);
+//        System.out.println("Penguin: " + penguin);
+//
+////        aquaticAnimal.swim();
+//        dolphin.swim();
+//        penguin.swim();
 
         // Créez des animaux aquatiques
 //        Aquatic aquaticAnimal1 = new Aquatic("Ocean");
@@ -113,6 +114,32 @@ public class ZooManagement {
         } catch (ZooFullException | InvalidAgeException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+
+
+        Dolphin dolphin = new Dolphin("Ocean", 20.0f);
+        Penguin penguin = new Penguin("Antarctica", 30.0f);
+        // Test the eatMeat method of Carnivore
+        System.out.println("Dolphin:");
+        dolphin.eatMeat(Food.MEAT);
+        dolphin.eatMeat(Food.PLANT);
+        dolphin.eatMeat(Food.BOTH);
+
+        // Test the eatMeat method of Carnivore for Penguin
+        System.out.println("\nPenguin:");
+        penguin.eatMeat(Food.MEAT);
+        penguin.eatMeat(Food.PLANT);
+        penguin.eatMeat(Food.BOTH);
+
+
+        // Create a Terrestrial object
+        Terrestrial bear = new Terrestrial("Forest", "Bear", 8);
+
+        // Test the eatPlantAndMeat method of Omnivore for Terrestrial
+        System.out.println("\nBear:");
+        bear.eatPlantAndMeat(Food.BOTH);
+        bear.eatPlantAndMeat(Food.MEAT);
+        bear.eatPlantAndMeat(Food.PLANT);
     }
 
 
