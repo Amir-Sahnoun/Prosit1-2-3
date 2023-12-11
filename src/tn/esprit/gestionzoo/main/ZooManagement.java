@@ -1,29 +1,28 @@
 package tn.esprit.gestionzoo.main;
 
 import tn.esprit.gestionzoo.entities.*;
+import tn.esprit.gestionzoo.exceptions.*;
 
 public class ZooManagement {
 
     public static void main(String[] args) {
-        Animal lion = new Animal();
-        lion.setName("Simba");
-        lion.setAge(8);
-        lion.setFamily("Cats");
-        lion.setMammal(true);
+//        Animal lion = new Animal();
+//        lion.setName("Simba");
+//        lion.setAge(8);
+//        lion.setFamily("Cats");
+//        lion.setMammal(true);
 
         Zoo myZoo = new Zoo("Wildlife Park", "Ariana");
         Zoo notMyZoo = new Zoo("WaterPark", "Siliana");
 
 
-        Animal dog = new Animal("Canine", "Snoopy", 2, true);
+//        Animal dog = new Animal("Canine", "Snoopy", 2, true);
 
 
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(dog));
 
         myZoo.displayAnimals();
 
-        System.out.println(myZoo.searchAnimal(dog));
+//        System.out.println(myZoo.searchAnimal(dog));
         Animal dog2 = new Animal("Canine", "lll", 2, true);
         System.out.println(myZoo.searchAnimal(dog2));
 
@@ -33,10 +32,10 @@ public class ZooManagement {
 
         System.out.println(myZoo);
 
-        myZoo.addAnimal(lion);
-        myZoo.addAnimal(dog);
-        myZoo.addAnimal(dog2);
-        myZoo.displayAnimals();
+//        myZoo.addAnimal(lion);
+//        myZoo.addAnimal(dog);
+//        myZoo.addAnimal(dog2);
+//        myZoo.displayAnimals();
 
 
         myZoo.setName("Belvedere Park");
@@ -97,6 +96,23 @@ public class ZooManagement {
         System.out.println("Max Penguin Swimming Depth: " + maxDepth);
         // Appelez la méthode displayNumberOfAquaticsByType() pour afficher les nombres
         myZoo.displayNumberOfAquaticsByType();
+
+
+
+        // Créez des animaux
+        Animal lion = new Animal("Furry", "Leonard", 16, true);
+        Animal dog = new Animal("Nappy", "Plugy", -2, true);
+//        Animal cat = new Animal("Fluffy", "Whiskers", 4, true);
+
+        try {
+            myZoo.addAnimal(lion);
+            System.out.println("Number of animals in the zoo: " + myZoo.getNbrAnimals());
+
+            myZoo.addAnimal(dog);
+            System.out.println("Number of animals in the zoo: " + myZoo.getNbrAnimals());
+        } catch (ZooFullException | InvalidAgeException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
 
